@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color .1s ease-in-out;
+}
+
+.no-transition * {
+  transition: none !important;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .1s ease-in-out, visibility 1s ease-in-out;
+}
+
+:root {
+  --hue: 0;
+  --bg-color: hsl(var(--hue), 5%, 7%);
+  --text-color: hsl(var(--hue), 40%, 98%);
+  --primary-color: hsl(var(--hue), 100%, 63%);
+  --controls-bg-color: hsl(var(--hue), 0%, 14%);
+  --button-secondary: hsl(var(--hue), 40%, 98%);
+  --sound-button: hsl(var(--hue), 9%, 49%, 21%);
+  --sound-button-icon: hsl(var(--hue), 6%, 80%);
+  
+  font-size: clamp(40%, 1% + 2vw, 62.5%);
+}
+
+.soundSelected {
+  --sound-button: hsl(var(--hue), 97%, 31%);
+  --sound-button-icon: white;
+}
+html.light .soundSelected {
+  --sound-button-icon: white;
+}
+
+html.light {
+  --text-color: hsl(var(--hue), 5%, 7%);
+  --bg-color: hsl(var(--hue), 40%, 98%);
+  --button-secondary: hsl(var(--hue), 40%, 0%);
+  --controls-bg-color: hsl(var(--hue), 0%, 14%);
+  --sound-button-icon: hsl(var(--hue), 6%, 0%);
+}
+
+html.light .ph-sun,
+html:not(.light) .ph-moon {
+  display: none;
+}
+
+#toggle-mode {
+  position: absolute;
+  right: 3.2rem;
+  top: 3.2rem;
+  font-size: 3.2rem;
+  line-height: 0;
+  color: var(--text-color);
+}
+
+#color-picker {
+  position: absolute;
+  right: 7.8rem;
+  top: 3.2rem;
+  font-size: 3.2rem;
+  line-height: 0;
+  color: var(--text-color);
+}
+
+#colorPickerUI {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border-radius: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+html.light #colorPickerUI{
+  background-color: black;
+}
+
+#color {
+  width: 26px;
+  height: 26px;
+  background-color: var(--primary-color);
+  border-radius: 100%;
+}
+
+#sliderContentWrapper {
+  position: absolute;
+  right: 13rem;
+  top: 3.8rem;
+  transition: opacity .1s ease-in-out, visibility 1s ease-in-out;
+}
+
+#sliderBG {
+  background-color: white;
+  border-radius: 16px;
+  width: 105%;
+  height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html.light #sliderBG {
+  background-color: black;
+}
+
+#colorSlider {
+  -webkit-appearance: none;
+  appearance: none; 
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 1.6rem;
+  transition: display 1s ease-in-out;
+}
+
+#colorSlider::-webkit-slider-runnable-track {
+  height: 1.5rem;
+  background: var(--bg-color);
+}
+
+#colorSlider::-moz-range-track {
+  height: 1.5rem;
+  background: var(--bg-color);
+}
+
+#colorSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none; 
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: white;
+  border-radius: 50%;
+  border: .2rem solid var(--primary-color);
+  box-shadow: -40.7rem 0 0 40rem var(--primary-color);
+}
+
+html.light #colorSlider::-webkit-slider-thumb {
+  background-color: black;
+}
+
+#colorSlider::-moz-range-thumb {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: var(--bg-color);
+  border-radius: 50%;
+  border: .2rem solid var(--primary-color);
+  box-shadow: -40.7rem 0 0 40rem var(--primary-color);
+}
+
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  appearance: none;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  display: grid;
+  height: 100vh;
+  place-content: center;
+}
+
+#app {
+  display: grid;
+  justify-items: center;
+  gap: 1.6rem;
+}
+
+.flex {
+  display: flex;
+}
+
+#timer {
+  font-size: 9.6rem;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+#controls {
+  padding: 2.2rem 4rem;
+  gap: 1.6rem;
+}
+
+
+button {
+  background-color: transparent;
+  border: 0;
+  color: var(--primary-color);
+
+  cursor: pointer;
+
+  font-size: 6.4rem;
+}
+
+.secondary {
+  color: var(--button-secondary);
+}
+
+/* Controls */
+.running .ph-play-circle,
+.running .ph-timer,
+.music-on .ph-speaker-none,
+html:not(.running) .ph-pause-circle,
+html:not(.running) .ph-stop-circle,
+html:not(.music-on) .ph-speaker-high {
+  transition: all 1s ease-in-out;
+  display: none;
+}
+
+#timerAndControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SOUND SECTION */
+#sounds {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+}
+
+.soundButton {
+  width: 13.8rem;
+  height: 15.2rem;
+  background-color: var(--sound-button);
+  border-radius: 2.4rem;
+}
+
+.soundButton .ph {
+  color: var(--sound-button-icon);
+}
+
+@media (min-width: 850px) {
+  #app {
+    display: flex;
+  }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="">
+<head>
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Temporizador estilo pomodoro">
+  <!-- Styles -->
+  <title>Focus Timer - Pomodoro</title>
+  <link rel="shortcut icon" href="./assets/favicon.svg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script type="module" src="./src/main.js" defer></script>
+</head>
+<body>
+  <div id="app">
+    <button id="toggle-mode">
+      <span class="sr-only">Ativar Light Mode</span>
+      <i class="ph-bold ph-sun"></i>
+      <i class="ph-bold ph-moon"></i>
+    </button>
+    <button id="color-picker">
+        <div id="colorPickerUI">
+          <div id="color"></div>
+        </div>
+      </button>
+      <div id="sliderContentWrapper" class="hide">
+        <div id="sliderBG">
+          <input type="range" min="0" max="360" step="1" value="0" id="colorSlider">
+        </div>
+      </div>
+
+    <div id="timerAndControls">
+      <section id="timer" class="flex">
+        <span id="minutes">00</span>
+        <span>:</span>
+        <span id="seconds">00</span>
+      </section>
+  
+      <section id="controls" class="flex">
+        <button 
+        data-action="toggleRunning"
+        class="ph ph-play-circle">
+          <span class="sr-only">Iniciar contador</span>
+        </button>
+        <button 
+        data-action="toggleRunning"
+        class="ph ph-pause-circle">
+          <span class="sr-only">Pausar contador</span>
+        </button>
+        <button 
+        data-action="set"
+        class="ph ph-timer secondary">
+          <span class="sr-only">Ajustar contador</span>
+        </button>
+        <button 
+        data-action="reset"
+        class="ph ph-stop-circle secondary">
+          <span class="sr-only">Reiniciar contador</span>
+        </button>
+        <button 
+        data-action="increaseTime"
+        class="ph ph-plus-circle secondary">
+          <span class="sr-only">Parar música</span>
+        </button>
+        <button 
+        data-action="decreaseTime"
+        class="ph ph-minus-circle secondary">
+          <span class="sr-only">Parar música</span>
+        </button>
+      </section>
+    </div>
+
+    <section id="sounds">
+      <button 
+        class="soundButton"
+        data-action="playForestSound">
+        <div class="ph ph-tree"></div>
+        <span class="sr-only">Som de Floresta</span>
+      </button>
+      <button 
+        class="soundButton"
+        data-action="playRainSound">
+        <div class="ph ph-cloud-rain"></div>
+        <span class="sr-only">Som de Chuva</span>
+      </button>
+      <button 
+        class="soundButton"
+        data-action="playCoffeeSound">
+        <div class="ph ph-coffee"></div>
+        <span class="sr-only">Som de Cafeteria</span>
+      </button>
+      <button 
+        class="soundButton"
+        data-action="playFireplaceSound">
+        <div class="ph ph-campfire"></div>
+        <span class="sr-only">Som de Lareira</span>
+      </button>
+    </section>
+    
+  </div>
+</body>
+</html>
